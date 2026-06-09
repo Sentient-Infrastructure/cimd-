@@ -1,0 +1,7 @@
+[network]
+peer_address = "127.0.0.1:11625"
+
+[validation]
+check_interval_ms = 1000
+alert_threshold = "block"
+log_level = "info"

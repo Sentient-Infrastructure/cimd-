@@ -1,0 +1,3 @@
+[alias]
+fmt-check = "fmt -- --check"
+clippy-check = "clippy --all-targets --all-features -- -D warnings"
