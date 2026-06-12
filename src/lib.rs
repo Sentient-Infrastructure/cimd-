@@ -19,3 +19,4 @@ pub mod finality_checker;
 pub mod quorum_set_builder;
 pub mod state_snapshot;
 pub mod ballot_counter;
+pub mod validator_set_diff;
