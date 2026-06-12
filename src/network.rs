@@ -60,7 +60,7 @@ impl Default for NodeSet {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct QuorumSet {
     pub threshold: u32,
-    pub validators: HashSet<NodeId>,
+    pub validators: NodeSet,
     pub inner_quorum_sets: Vec<QuorumSet>,
 }
 
@@ -71,7 +71,7 @@ pub struct NetworkConfiguration {
 }
 
 impl QuorumSet {
-    pub fn new(threshold: u32, validators: HashSet<NodeId>) -> Self {
+    pub fn new(threshold: u32, validators: NodeSet) -> Self {
         Self {
             threshold,
             validators,
@@ -79,8 +79,8 @@ impl QuorumSet {
         }
     }
 
-    pub fn has_quorum(&self, subset: &HashSet<NodeId>) -> bool {
-        let local_satisfied = subset.intersection(&self.validators).count() >= self.threshold as usize;
+    pub fn has_quorum(&self, subset: &NodeSet) -> bool {
+        let local_satisfied = subset.intersection(&self.validators).len() >= self.threshold as usize;
         let inner_satisfied = self.inner_quorum_sets.iter()
             .filter(|qs| qs.has_quorum(subset))
             .count();
@@ -108,7 +108,7 @@ impl NetworkConfiguration {
 
     pub fn byzantine_fault_tolerance(&self) -> f64 {
         let total_validators: usize = self.quorum_sets.values()
-            .flat_map(|qs| &qs.validators)
+            .flat_map(|qs| qs.validators.iter())
             .collect::<HashSet<_>>()
             .len();
         

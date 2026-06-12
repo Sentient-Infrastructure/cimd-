@@ -19,7 +19,7 @@ pub struct StateTransition {
     pub transition_time_ms: u64,
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub enum StateChange {
     QuorumSetModified,
     SlotProgressed,
