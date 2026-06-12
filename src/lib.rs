@@ -11,3 +11,4 @@ pub mod reconfiguration;
 pub mod metrics;
 pub mod logging;
 pub mod quorum_validator;
+pub mod byzantine_analyzer;
