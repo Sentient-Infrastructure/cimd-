@@ -10,3 +10,4 @@ pub mod network_state;
 pub mod reconfiguration;
 pub mod metrics;
 pub mod logging;
+pub mod quorum_validator;
