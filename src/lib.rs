@@ -18,3 +18,4 @@ pub mod config_validator;
 pub mod finality_checker;
 pub mod quorum_set_builder;
 pub mod state_snapshot;
+pub mod ballot_counter;
