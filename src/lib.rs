@@ -25,3 +25,4 @@ pub mod reconfig_impact;
 pub mod event_log;
 pub mod threshold_validator;
 pub mod consensus_rounds;
+pub mod safe_state;
