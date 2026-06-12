@@ -32,3 +32,4 @@ pub mod validation_metrics;
 pub mod ballot_commitment;
 pub mod consensus_checkpoint;
 pub mod anomaly_detector;
+pub mod intactness_proof;
