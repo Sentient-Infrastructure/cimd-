@@ -28,3 +28,4 @@ pub mod consensus_rounds;
 pub mod safe_state;
 pub mod slot_ordering;
 pub mod quorum_history;
+pub mod validation_metrics;
