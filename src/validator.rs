@@ -1,8 +1,7 @@
 use crate::error::Result;
-use crate::network::{NetworkConfiguration, NodeId};
+use crate::network::{NetworkConfiguration, NodeId, NodeSet};
 use crate::slot::{SlotState, SlotPhase};
 use serde::{Deserialize, Serialize};
-use std::collections::HashSet;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ValidationResult {
@@ -58,7 +57,7 @@ impl Validator {
         slots: &SlotState,
     ) -> Result<bool> {
         for qs in config.quorum_sets.values() {
-            let active_validators: HashSet<NodeId> = HashSet::new();
+            let active_validators: NodeSet = NodeSet::new();
             if !qs.has_quorum(&active_validators) {
                 return Ok(false);
             }
