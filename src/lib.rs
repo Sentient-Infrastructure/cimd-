@@ -30,3 +30,4 @@ pub mod slot_ordering;
 pub mod quorum_history;
 pub mod validation_metrics;
 pub mod ballot_commitment;
+pub mod consensus_checkpoint;
