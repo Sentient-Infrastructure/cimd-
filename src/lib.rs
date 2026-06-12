@@ -13,3 +13,4 @@ pub mod logging;
 pub mod quorum_validator;
 pub mod byzantine_analyzer;
 pub mod slot_phase_tracker;
+pub mod node_reachability;
