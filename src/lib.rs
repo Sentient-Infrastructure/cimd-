@@ -16,3 +16,4 @@ pub mod slot_phase_tracker;
 pub mod node_reachability;
 pub mod config_validator;
 pub mod finality_checker;
+pub mod quorum_set_builder;
