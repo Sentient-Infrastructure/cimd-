@@ -4,6 +4,59 @@ use std::collections::{HashMap, HashSet};
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq, Hash)]
 pub struct NodeId(pub String);
 
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub struct NodeSet {
+    nodes: HashSet<NodeId>,
+}
+
+impl NodeSet {
+    pub fn new() -> Self {
+        Self {
+            nodes: HashSet::new(),
+        }
+    }
+
+    pub fn with_nodes(nodes: HashSet<NodeId>) -> Self {
+        Self { nodes }
+    }
+
+    pub fn add(&mut self, node: NodeId) {
+        self.nodes.insert(node);
+    }
+
+    pub fn contains(&self, node: &NodeId) -> bool {
+        self.nodes.contains(node)
+    }
+
+    pub fn len(&self) -> usize {
+        self.nodes.len()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.nodes.is_empty()
+    }
+
+    pub fn intersection(&self, other: &NodeSet) -> NodeSet {
+        let nodes = self.nodes.intersection(&other.nodes).cloned().collect();
+        NodeSet::with_nodes(nodes)
+    }
+
+    pub fn union(&self, other: &NodeSet) -> NodeSet {
+        let nodes = self.nodes.union(&other.nodes).cloned().collect();
+        NodeSet::with_nodes(nodes)
+    }
+
+    pub fn iter(&self) -> impl Iterator<Item = &NodeId> {
+        self.nodes.iter()
+    }
+}
+
+impl Default for NodeSet {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct QuorumSet {
     pub threshold: u32,
